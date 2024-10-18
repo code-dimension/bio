@@ -4,6 +4,7 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
+import serverless from 'serverless-http';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -47,16 +48,18 @@ export function app(): express.Express {
   return server;
 }
 
-function run(): void {
-  const hostname =
-    process.env['NODE_ENV'] === 'production' ? '0.0.0.0' : 'localhost';
-  const port = process.env['PORT'] || 4000;
+export const handler = serverless(app());
 
-  // Start up the Node server
-  const server = app();
-  server.listen(Number(port), hostname, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
-}
+// function run(): void {
+//   const hostname =
+//     process.env['NODE_ENV'] === 'production' ? '0.0.0.0' : 'localhost';
+//   const port = process.env['PORT'] || 4000;
 
-run();
+//   // Start up the Node server
+//   const server = app();
+//   server.listen(Number(port), hostname, () => {
+//     console.log(`Node Express server listening on http://localhost:${port}`);
+//   });
+// }
+
+// run();
