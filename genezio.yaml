@@ -1,6 +1,6 @@
 backend:
     functions:
-        - entry: dist/index.js
+        - entry: dist/bio/server/server.mjs
           handler: handler
           name: express-function
           path: ./

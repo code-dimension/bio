@@ -1,0 +1,128 @@
+<div class="py-20 px-8 flex justify-center">
+  <div class="w-full max-w-lg space-y-12">
+    <figure class="flex justify-center">
+      <img
+        class="rounded-full w-[150px]"
+        src="code-dimension-logo.png"
+        alt="Code Dimesion Logo"
+      />
+    </figure>
+
+    <section>
+      <h1 class="text-3xl font-bold text-center mb-4">Code Dimension</h1>
+      <p class="text-center">Alcance o próximo nível na sua carreira!</p>
+    </section>
+
+    <section class="flex justify-center space-x-4">
+      <a href="https://www.youtube.com/@code.dimension">
+        <img class="w-6" src="icons/youtube.svg" alt="Youtube" />
+      </a>
+
+      <a href="https://chat.whatsapp.com/Eo6YWjWyAgA5gdBUkXoi13">
+        <img class="w-6" src="icons/whatsapp.svg" alt="Whatsapp" />
+      </a>
+
+      <a href="https://discord.gg/VFNmgxEHXF">
+        <img class="w-6" src="icons/discord.svg" alt="Discord" />
+      </a>
+
+      <a href="https://www.codedimension.com.br/contato/">
+        <img class="w-6" src="icons/email.svg" alt="Email" />
+      </a>
+
+      <a href="https://www.tiktok.com/@codedimension?_t=8olNHxRO7u9&_r=1">
+        <img class="w-6" src="icons/tiktok.svg" alt="Tiktok" />
+      </a>
+
+      <a href="https://instagram.com/codedimension_">
+        <img class="w-6" src="icons/instagram.svg" alt="Instagram" />
+      </a>
+
+      <a href="https://www.threads.net/@codedimension_">
+        <img class="w-6" src="icons/threads.svg" alt="Threads" />
+      </a>
+    </section>
+
+    <section class="flex justify-center">
+      <h2 class="text-2xl font-bold text-center">
+        Não perca essas oportunidades! <br />🚨👇🏽
+      </h2>
+    </section>
+
+    <section class="space-y-8">
+      <app-card
+        class="block"
+        link="https://www.codedimension.com.br/cursos/testes-automatizados/"
+        color="primary"
+      >
+        <ng-container title>
+          Curso Testes Automatizados com Angular!
+        </ng-container>
+
+        <ng-container description>
+          Aprenda a criar testes eficientes de verdade e torne-se um
+          profissional altamente requisitado no mercado!
+        </ng-container>
+      </app-card>
+
+      <app-card
+        class="block"
+        link="https://www.youtube.com/playlist?list=PLXEUJjGpEX7zwdFSAzIPiSf9p0tOeI1Yu"
+      >
+        <ng-container title> Curso de Angular 17 </ng-container>
+
+        <ng-container description>
+          Aprenda todos os conceitos sobre Angular 17 de forma 100% gratuita!
+        </ng-container>
+      </app-card>
+    </section>
+
+    <section class="flex justify-center">
+      <h2 class="text-2xl font-bold text-center">
+        Confira todo o nosso conteúdo! <br />
+        💜👇🏽
+      </h2>
+    </section>
+
+    <section class="space-y-8">
+      <app-card class="block" link="http://codedimension.com.br/">
+        <ng-container title> Nosso Website </ng-container>
+
+        <ng-container description>
+          O lugar perfeito para você ficar por dentro de novos cursos e
+          conteúdos!
+        </ng-container>
+      </app-card>
+
+      <app-card class="block" link="http://codedimension.com.br/">
+        <ng-container title> Nosso Blog </ng-container>
+
+        <ng-container description>
+          Muito contéudo sobre Frontend e Angular. É o melhor lugar para você se
+          atualizar!
+        </ng-container>
+      </app-card>
+    </section>
+
+    <section class="flex flex-col items-center">
+      <h2 class="text-2xl font-bold text-center mb-12">
+        Últimos vídeos do nosso canal! <br />
+        😎📽️👇🏽
+      </h2>
+
+      <div class="w-full space-y-8">
+        @for (video of videos$ | async; track video) {
+        <app-video class="block" [videoUrl]="video"></app-video>
+        }
+      </div>
+    </section>
+  </div>
+</div>
+<footer class="footer footer-center bg-base-300 text-base-content p-4">
+  <aside>
+    <p>
+      Copyright © {{ currentYear() }} - Esse website foi feito com muito 💜 por
+      <a class="link-primary" href="https://www.codedimension.com.br/">Code Dimension</a>
+    </p>
+  </aside>
+</footer>
