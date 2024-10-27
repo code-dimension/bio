@@ -66,4 +66,4 @@ if (process.env["NODE_ENV"] !== "production") {
   run();
 }
 
-export const handler = serverless(app);
+export const handler = serverless(app());
