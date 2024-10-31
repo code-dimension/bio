@@ -3,11 +3,13 @@ import { booleanAttribute, Component, computed, input, OnInit } from '@angular/c
 
 const colorClasses = new Map([
   ['primary', 'bg-primary text-primary-content'],
+  ['warning', 'bg-warning text-warning-content'],
   ['neutral', 'bg-neutral text-neutral-content'],
 ]);
 
 const iconColors = new Map([
   ['primary', 'icons/box-arrow-up-right-dark.svg'],
+  ['warning', 'icons/box-arrow-up-right-dark.svg'],
   ['neutral', 'icons/box-arrow-up-right.svg'],
 ]);
 
@@ -19,6 +21,7 @@ const iconColors = new Map([
     <a [href]="link()">
       <div class="card w-full" [ngClass]="colorClasses()">
         <div class="card-body">
+          <ng-content select="[badges]"></ng-content>
           <div class="flex">
             <div class="space-y-2 max-w-[90%]">
               <h2 class="card-title">
@@ -38,13 +41,15 @@ const iconColors = new Map([
 export class CardComponent {
   link = input.required<string>();
 
-  color = input<'primary' | 'neutral' | 'secondary'>('neutral');
+  color = input<'primary' | 'neutral' | 'warning' | undefined>();
+
+  treatedColor = computed(() => this.color() || 'neutral');
 
   colorClasses = computed(() => {
-    return colorClasses.get(this.color());
+    return colorClasses.get(this.treatedColor());
   });
 
   iconColor = computed(() => {
-    return iconColors.get(this.color());
+    return iconColors.get(this.treatedColor());
   });
 }
