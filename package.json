@@ -9,7 +9,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "watch:ssr:bio": "nodemon dist/bio/server/server.mjs",
-    "serve:ssr:bio": "node dist/bio/server/server.mjs"
+    "serve:ssr:bio": "node dist/bio/server/server.mjs",
+    "deploy": "genezio deploy"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +40,7 @@
     "autoprefixer": "^10.4.20",
     "daisyui": "^4.12.11",
     "dotenv": "^16.4.5",
+    "genezio": "^2.6.7",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
