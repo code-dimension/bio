@@ -7,7 +7,6 @@ import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 import bootstrap from "./src/main.server";
 import { api } from "./server-api";
-import serverless from "serverless-http";
 
 export function app(): express.Express {
   const server = express();
@@ -62,8 +61,4 @@ function run(): void {
   });
 }
 
-if (process.env["NODE_ENV"] !== "production") {
-  run();
-}
-
-export const handler = serverless(app());
+run();
