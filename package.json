@@ -9,8 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "watch:ssr:bio": "nodemon dist/bio/server/server.mjs",
-    "serve:ssr:bio": "node dist/bio/server/server.mjs",
-    "deploy": "genezio deploy"
+    "serve:ssr:bio": "node dist/bio/server/server.mjs"
   },
   "private": true,
   "dependencies": {
