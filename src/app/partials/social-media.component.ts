@@ -44,11 +44,6 @@ export class SocialMediaComponent {
       alt: "Discord",
     },
     {
-      href: "https://www.codedimension.com.br/contato/",
-      src: "icons/email.svg",
-      alt: "Email",
-    },
-    {
       href: "https://www.tiktok.com/@codedimension?_t=8olNHxRO7u9&_r=1",
       src: "icons/tiktok.svg",
       alt: "Tiktok",
@@ -62,6 +57,11 @@ export class SocialMediaComponent {
       href: "https://www.threads.net/@codedimension_",
       src: "icons/threads.svg",
       alt: "Threads",
+    },
+    {
+      href: "https://www.linkedin.com/company/code-dimension/",
+      src: "icons/linkedin.svg",
+      alt: "Linkedin",
     },
   ];
 }
