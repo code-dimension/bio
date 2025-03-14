@@ -1,3 +1,4 @@
+name: Deploy
 on:
   push:
     branches:
@@ -13,11 +14,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      - name: install deps
-        shell: bash
-        run: npm install
       - name: build
         shell: bash
-        run: npm run build
-      
+        run: | 
+          npm install
+          npm run build
+      - name: Send files with FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.samkirkland.com
+          username: myFtpUserName
+          password: ${{ secrets.ftp_password }}
+        
       
