@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  my_job:
+    name: deploy to staging
+    runs-on: ubuntu-22.04
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: install deps
+        shell: bash
+        run: npm install
+      - name: build
+        shell: bash
+        run: npm run build
+      
+      
