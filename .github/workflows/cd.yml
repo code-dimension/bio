@@ -44,6 +44,11 @@ jobs:
             echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export NODE_ENV=production'
             echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}'
 
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash'
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'source ~/.bashrc'
+
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'nvm install 20.12.2 && nvm use 20.12.2'
+
             echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'npm i -g pm2'
 
             echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 list'
