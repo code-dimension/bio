@@ -31,7 +31,7 @@ jobs:
           server: '${{ secrets.HOST }}'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           local_path: './dist/*'
-          remote_path: '/home/admin/dist'
+          remote_path: '/home/${{ secrets.SSH_USERNAME }}/dist'
 
       - name: SSH access
         uses: appleboy/ssh-action@v1.2.2
@@ -40,15 +40,15 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S export PORT=80
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S export NODE_ENV=production
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export PORT=80'
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export NODE_ENV=production'
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}'
 
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S pm2 list
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 list'
 
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S pm2 start dist/bio/server/server.mjs -i max --name server
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 start dist/bio/server/server.mjs -i max --name server'
 
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S pm2 list
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 list'
              
         
       
