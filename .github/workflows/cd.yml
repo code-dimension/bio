@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - deploy-action
 
 jobs:
   my_job:
@@ -24,7 +23,7 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Deploy
+      - name: Send files to server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.5
         with:
           username: "${{ secrets.SSH_USERNAME }}"
@@ -33,7 +32,7 @@ jobs:
           local_path: "./dist/*"
           remote_path: "/home/${{ secrets.SSH_USERNAME }}/dist"
 
-      - name: SSH access
+      - name: Setup server
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.HOST }}
