@@ -3,27 +3,45 @@ on:
   push:
     branches:
     - main
+    
 jobs:
   my_job:
     name: deploy to staging
     runs-on: ubuntu-22.04
     steps:
-      - name: clone repo
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      # - name: Checkout
+      #   uses: actions/checkout@v4
+
+      # - name: Setup Node
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20.x'
+      
+      # - name: Install dependencies
+      #   run: npm install
+
+      # - name: Build app
+      #   run: npm run build
+  
+
+      # - name: Deploy 
+      #   uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+      #   with:
+      #     username: '${{ secrets.USER }}'
+      #     server: '${{ secrets.HOST }}'
+      #     ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     local_path: './build/*'
+      #     remote_path: '/var/www/react-app'
+      #     rsyncArgs: '--exclude=*.map'
+      #     sftpArgs: '-o ConnectTimeout=5'
+
+      - name: SSH access
+        uses: appleboy/ssh-action@v1.2.2
         with:
-          node-version: '20.x'
-      - name: build
-        shell: bash
-        run: | 
-          npm install
-          npm run build
-      - name: Send files with FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ftp.samkirkland.com
-          username: myFtpUserName
-          password: ${{ secrets.ftp_password }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "Hello, SSH!"
         
       
