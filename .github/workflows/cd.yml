@@ -10,31 +10,28 @@ jobs:
     name: deploy to staging
     runs-on: ubuntu-22.04
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # - name: Setup Node
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20.x'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
       
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Install dependencies
+        run: npm install
 
-      # - name: Build app
-      #   run: npm run build
+      - name: Build app
+        run: npm run build
   
-
-      # - name: Deploy 
-      #   uses: wlixcc/SFTP-Deploy-Action@v1.2.5
-      #   with:
-      #     username: '${{ secrets.USER }}'
-      #     server: '${{ secrets.HOST }}'
-      #     ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     local_path: './build/*'
-      #     remote_path: '/var/www/react-app'
-      #     rsyncArgs: '--exclude=*.map'
-      #     sftpArgs: '-o ConnectTimeout=5'
+      - name: Deploy 
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+        with:
+          username: '${{ secrets.SSH_USERNAME }}'
+          server: '${{ secrets.HOST }}'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          local_path: './dist/*'
+          remote_path: '/home/admin/dist'
 
       - name: SSH access
         uses: appleboy/ssh-action@v1.2.2
@@ -43,6 +40,15 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "Hello, SSH!"
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S export PORT=80
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S export NODE_ENV=production
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}
+
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S pm2 list
+
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S pm2 start dist/bio/server/server.mjs -i max --name server
+
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S pm2 list
+             
         
       
