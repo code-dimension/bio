@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - deploy-action
     
 jobs:
   my_job:
