@@ -2,9 +2,9 @@ name: Deploy
 on:
   push:
     branches:
-    - main
-    - deploy-action
-    
+      - main
+      - deploy-action
+
 jobs:
   my_job:
     name: deploy to staging
@@ -16,22 +16,22 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-      
+          node-version: "20.x"
+
       - name: Install dependencies
         run: npm install
 
       - name: Build app
         run: npm run build
-  
-      - name: Deploy 
+
+      - name: Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.5
         with:
-          username: '${{ secrets.SSH_USERNAME }}'
-          server: '${{ secrets.HOST }}'
+          username: "${{ secrets.SSH_USERNAME }}"
+          server: "${{ secrets.HOST }}"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          local_path: './dist/*'
-          remote_path: '/home/${{ secrets.SSH_USERNAME }}/dist'
+          local_path: "./dist/*"
+          remote_path: "/home/${{ secrets.SSH_USERNAME }}/dist"
 
       - name: SSH access
         uses: appleboy/ssh-action@v1.2.2
@@ -40,22 +40,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export PORT=80'
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export NODE_ENV=production'
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}'
-
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash'
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'source ~/.bashrc'
-
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'nvm install 20.12.2 && nvm use 20.12.2'
-
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'npm i -g pm2'
-
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 list'
-
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 start dist/bio/server/server.mjs -i max --name server'
-
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 list'
-             
-        
-      
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export PORT=80 && export NODE_ENV=production && export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }} && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash && source ~/.bashrc && nvm install 20.12.2 && nvm use 20.12.2 && npm i -g pm2 && pm2 list && pm2 start dist/bio/server/server.mjs -i max --name server && pm2 list'
