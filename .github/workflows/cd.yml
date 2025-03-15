@@ -5,8 +5,8 @@ on:
       - main
 
 jobs:
-  my_job:
-    name: deploy to staging
+  deploy:
+    name: Deploy
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
