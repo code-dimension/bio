@@ -51,7 +51,7 @@ export class CoursesComponent {
       description:
         "Aprenda a criar testes eficientes de verdade e torne-se um profissional altamente requisitado no mercado!",
       link: "https://www.codedimension.com.br/cursos/testes-automatizados/",
-      badges: [{ label: "pré-venda liberada 🔥", class: "badge-neutral" }],
+      badges: [{ label: "Lançamento 🚀", class: "badge-neutral" }],
     },
 
     {
