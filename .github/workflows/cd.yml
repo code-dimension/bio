@@ -40,4 +40,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'pm2 restart server && pm2 list'
+            echo ${{ secrets.SSH_SUDO_PASSWORD }} | sudo -S su -c 'export PORT=80 && export NODE_ENV=production && export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }} && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash && export NVM_DIR=~/.nvm && source ~/.nvm/nvm.sh && nvm install 20.12.2 && nvm use 20.12.2 && npm i -g pm2 && pm2 list && pm2 delete server && pm2 start dist/bio/server/server.mjs -i max --name server && pm2 list'
