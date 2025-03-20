@@ -50,7 +50,7 @@ export class CoursesComponent {
       title: "Curso Testes Automatizados com Angular!",
       description:
         "Aprenda a criar testes eficientes de verdade e torne-se um profissional altamente requisitado no mercado!",
-      link: "https://www.codedimension.com.br/cursos/testes-automatizados/",
+      link: "https://www.codedimension.com.br/cursos/testes-automatizados/?utm_source=bio&utm_medium=organic&utm_campaign=bio_website",
       badges: [{ label: "Lançamento 🚀", class: "badge-neutral" }],
     },
 
