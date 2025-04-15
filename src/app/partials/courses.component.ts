@@ -19,26 +19,25 @@ interface Course {
   },
   template: `
     @for (item of courses; track item.title) {
-    <app-card class="block" [link]="item.link" [color]="item.color">
-      @if (item.badges) {
-
-      <ng-container badges>
-        @for (badge of item.badges; track $index) {
-        <div class="badge" [ngClass]="badge.class">
-          {{ badge.label }}
-        </div>
+      <app-card class="block" [link]="item.link" [color]="item.color">
+        @if (item.badges) {
+          <ng-container badges>
+            @for (badge of item.badges; track $index) {
+              <div class="badge" [ngClass]="badge.class">
+                {{ badge.label }}
+              </div>
+            }
+          </ng-container>
         }
-      </ng-container>
-      }
 
-      <ng-container title>
-        {{ item.title }}
-      </ng-container>
+        <ng-container title>
+          {{ item.title }}
+        </ng-container>
 
-      <ng-container description>
-        {{ item.description }}
-      </ng-container>
-    </app-card>
+        <ng-container description>
+          {{ item.description }}
+        </ng-container>
+      </app-card>
     }
   `,
   styles: [``],

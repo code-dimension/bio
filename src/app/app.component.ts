@@ -17,10 +17,8 @@ import { YtVideosComponent } from "./partials/yt-videos.component";
     LogoComponent,
     ContentsComponent,
     FooterComponent,
-    YtVideosComponent
+    YtVideosComponent,
   ],
   templateUrl: "./app.component.html",
 })
-export class AppComponent {
- 
-}
+export class AppComponent {}

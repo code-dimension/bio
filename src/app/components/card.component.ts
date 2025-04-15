@@ -1,22 +1,28 @@
-import { CommonModule } from '@angular/common';
-import { booleanAttribute, Component, computed, input, OnInit } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import {
+  booleanAttribute,
+  Component,
+  computed,
+  input,
+  OnInit,
+} from "@angular/core";
 
 const colorClasses = new Map([
-  ['primary', 'bg-primary text-primary-content'],
-  ['warning', 'bg-warning text-warning-content'],
-  ['neutral', 'bg-neutral text-neutral-content'],
+  ["primary", "bg-primary text-primary-content"],
+  ["warning", "bg-warning text-warning-content"],
+  ["neutral", "bg-neutral text-neutral-content"],
 ]);
 
 const iconColors = new Map([
-  ['primary', 'icons/box-arrow-up-right-dark.svg'],
-  ['warning', 'icons/box-arrow-up-right-dark.svg'],
-  ['neutral', 'icons/box-arrow-up-right.svg'],
+  ["primary", "icons/box-arrow-up-right-dark.svg"],
+  ["warning", "icons/box-arrow-up-right-dark.svg"],
+  ["neutral", "icons/box-arrow-up-right.svg"],
 ]);
 
 @Component({
   standalone: true,
   imports: [CommonModule],
-  selector: 'app-card',
+  selector: "app-card",
   template: `
     <a [href]="link()">
       <div class="card w-full" [ngClass]="colorClasses()">
@@ -41,9 +47,9 @@ const iconColors = new Map([
 export class CardComponent {
   link = input.required<string>();
 
-  color = input<'primary' | 'neutral' | 'warning' | undefined>();
+  color = input<"primary" | "neutral" | "warning" | undefined>();
 
-  treatedColor = computed(() => this.color() || 'neutral');
+  treatedColor = computed(() => this.color() || "neutral");
 
   colorClasses = computed(() => {
     return colorClasses.get(this.treatedColor());

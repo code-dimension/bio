@@ -17,7 +17,7 @@ interface Content {
   template: `
     <div class="w-full space-y-8">
       @for (video of videos$ | async; track video) {
-      <app-video class="block" [videoUrl]="video"></app-video>
+        <app-video class="block" [videoUrl]="video"></app-video>
       }
     </div>
   `,
@@ -27,5 +27,4 @@ export class YtVideosComponent {
   youtubeService = inject(YoutubeService);
 
   videos$ = this.youtubeService.getLastestVideos();
-
 }

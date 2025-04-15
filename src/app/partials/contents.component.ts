@@ -17,15 +17,15 @@ interface Content {
   },
   template: `
     @for (item of contents; track item.title) {
-    <app-card class="block" [link]="item.link">
-      <ng-container title>
-        {{ item.title }}
-      </ng-container>
+      <app-card class="block" [link]="item.link">
+        <ng-container title>
+          {{ item.title }}
+        </ng-container>
 
-      <ng-container description>
-        {{ item.description }}
-      </ng-container>
-    </app-card>
+        <ng-container description>
+          {{ item.description }}
+        </ng-container>
+      </app-card>
     }
   `,
   styles: [``],
