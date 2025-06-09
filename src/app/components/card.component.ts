@@ -8,15 +8,10 @@ import {
 } from "@angular/core";
 
 const colorClasses = new Map([
-  ["primary", "bg-primary text-primary-content"],
-  ["warning", "bg-warning text-warning-content"],
-  ["neutral", "bg-neutral text-neutral-content"],
-]);
-
-const iconColors = new Map([
-  ["primary", "icons/box-arrow-up-right-dark.svg"],
-  ["warning", "icons/box-arrow-up-right-dark.svg"],
-  ["neutral", "icons/box-arrow-up-right.svg"],
+  ["primary", " border border-primary"],
+  ["warning", " border border-warning"],
+  ["neutral", ""],
+  ["info", " border border-info"],
 ]);
 
 @Component({
@@ -25,7 +20,7 @@ const iconColors = new Map([
   selector: "app-card",
   template: `
     <a [href]="link()">
-      <div class="card w-full" [ngClass]="colorClasses()">
+      <div class="card w-full bg-neutral text-neutral-content" [ngClass]="colorClasses()">
         <div class="card-body">
           <ng-content select="[badges]"></ng-content>
           <div class="flex">
@@ -37,7 +32,11 @@ const iconColors = new Map([
                 <ng-content select="[description]"></ng-content>
               </p>
             </div>
-            <img class="w-6 ml-auto" [src]="iconColor()" alt="External Link" />
+            <img
+              class="w-6 ml-auto"
+              src="icons/box-arrow-up-right.svg"
+              alt="External Link"
+            />
           </div>
         </div>
       </div>
@@ -47,15 +46,11 @@ const iconColors = new Map([
 export class CardComponent {
   link = input.required<string>();
 
-  color = input<"primary" | "neutral" | "warning" | undefined>();
+  color = input<"primary" | "neutral" | "warning" | "info" | undefined>();
 
   treatedColor = computed(() => this.color() || "neutral");
 
   colorClasses = computed(() => {
     return colorClasses.get(this.treatedColor());
-  });
-
-  iconColor = computed(() => {
-    return iconColors.get(this.treatedColor());
   });
 }
