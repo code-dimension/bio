@@ -7,7 +7,10 @@ interface Course {
   description: string;
   color?: "primary" | "neutral" | "warning" | "info";
   link: string;
-  badges: { label: string; class: string }[];
+  badges: {
+    label: string;
+    class: "badge-warning" | "badge-info" | "badge-primary";
+  }[];
 }
 
 @Component({
@@ -45,12 +48,12 @@ interface Course {
 export class CoursesComponent {
   courses: Course[] = [
     {
-      color: "info",
+      color: "warning",
       title: "Curso Angular Moderno",
       description:
         "Aprenda todas as novidades do Angular 20 e se torne um desenvolvedor mais produtivo e eficiente no seu dia a dia!",
       link: "https://www.codedimension.com.br/cursos/angular-moderno/?utm_source=bio&utm_medium=organic&utm_campaign=bio_website",
-      badges: [{ label: "Lista de espera", class: "badge-info" }],
+      badges: [{ label: "Pré-Venda - 50% OFF", class: "badge-warning" }],
     },
     
     {
@@ -59,7 +62,7 @@ export class CoursesComponent {
       description:
         "Aprenda a criar testes eficientes de verdade e torne-se um profissional altamente requisitado no mercado!",
       link: "https://www.codedimension.com.br/cursos/testes-automatizados/?utm_source=bio&utm_medium=organic&utm_campaign=bio_website",
-      badges: [{ label: "Lançamento 🚀", class: "badge-warning" }],
+      badges: [{ label: "Lançamento - 10 %OFF", class: "badge-warning" }],
     },
 
     {
