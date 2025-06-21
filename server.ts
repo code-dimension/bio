@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+import "./instrument";
+import * as Sentry from "@sentry/node";
 import { APP_BASE_HREF } from "@angular/common";
 import { CommonEngine } from "@angular/ssr";
 import express, { Router } from "express";
@@ -20,6 +22,10 @@ export function app(): express.Express {
   server.set("views", browserDistFolder);
 
   server.use("/api", api);
+
+  server.get("/debug-sentry", function mainHandler(req, res) {
+    throw new Error("My first Sentry error!");
+  });
 
   // Serve static files from /browser
   server.get(
@@ -56,6 +62,9 @@ function run(): void {
 
   // Start up the Node server
   const server = app();
+
+  Sentry.setupExpressErrorHandler(server);
+
   server.listen(Number(port), hostname, () => {
     console.log(`Node Express server listening on http://${hostname}:${port}`);
   });
