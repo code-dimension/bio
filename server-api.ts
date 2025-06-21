@@ -21,25 +21,29 @@ interface ContentDetails {
 const api = express.Router();
 
 api.get('/list-latest-videos', async (req, res) => {
-  const playlistItemsResponse = await axios.get(
-    'https://www.googleapis.com/youtube/v3/playlistItems',
-    {
-      params: {
-        playlistId: YOUTUBE_PLAYLIST_ID,
-        key: YOUTUBE_API_KEY,
-        part: 'contentDetails',
-      },
-    }
-  );
-
-  const videoUrls = playlistItemsResponse.data.items
-    .filter((item: PlaylistItem) =>
-      Boolean(item.contentDetails.videoPublishedAt)
-    )
-    .map((item: PlaylistItem) => item.contentDetails.videoId)
-    .map((videoId: string) => `https://www.youtube.com/embed/${videoId}`);
-
-  res.json(videoUrls);
+  try {
+    const playlistItemsResponse = await axios.get(
+      "https://www.googleapis.com/youtube/v3/playlistItems",
+      {
+        params: {
+          playlistId: YOUTUBE_PLAYLIST_ID,
+          key: YOUTUBE_API_KEY,
+          part: "contentDetails",
+        },
+      }
+    );
+  
+    const videoUrls = playlistItemsResponse.data.items
+      .filter((item: PlaylistItem) =>
+        Boolean(item.contentDetails.videoPublishedAt)
+      )
+      .map((item: PlaylistItem) => item.contentDetails.videoId)
+      .map((videoId: string) => `https://www.youtube.com/embed/${videoId}`);
+  
+    res.json(videoUrls);
+  } catch (error) {
+    res.json([]);
+  }
 });
 
 export { api };
