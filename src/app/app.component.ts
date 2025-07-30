@@ -6,6 +6,7 @@ import { LogoComponent } from "./partials/logo.component";
 import { ContentsComponent } from "./partials/contents.component";
 import { FooterComponent } from "./partials/footer.component";
 import { YtVideosComponent } from "./partials/yt-videos.component";
+import { HotmartComponent } from "./partials/hotmart.component";
 
 @Component({
   selector: "app-root",
@@ -18,7 +19,8 @@ import { YtVideosComponent } from "./partials/yt-videos.component";
     ContentsComponent,
     FooterComponent,
     YtVideosComponent,
-  ],
+    HotmartComponent
+],
   templateUrl: "./app.component.html",
 })
 export class AppComponent {}
