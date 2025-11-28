@@ -5,12 +5,12 @@ import {
   input,
   OnInit,
   signal,
-} from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+} from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   standalone: true,
-  selector: 'app-video',
+  selector: "app-video",
   template: `
     <iframe
       [src]="safeVideoUrl()"

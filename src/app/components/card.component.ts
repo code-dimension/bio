@@ -15,11 +15,14 @@ const colorClasses = new Map([
 ]);
 
 @Component({
-    imports: [CommonModule],
-    selector: "app-card",
-    template: `
+  imports: [CommonModule],
+  selector: "app-card",
+  template: `
     <a [href]="link()">
-      <div class="card w-full bg-neutral text-neutral-content" [ngClass]="colorClasses()">
+      <div
+        class="card w-full bg-neutral text-neutral-content"
+        [ngClass]="colorClasses()"
+      >
         <div class="card-body">
           <ng-content select="[badges]"></ng-content>
           <div class="flex">
@@ -40,7 +43,7 @@ const colorClasses = new Map([
         </div>
       </div>
     </a>
-  `
+  `,
 })
 export class CardComponent {
   link = input.required<string>();

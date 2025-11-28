@@ -11,8 +11,8 @@ import { BlackFridayComponent } from "./partials/black-friday.component";
 import { DateTime } from "luxon";
 
 @Component({
-    selector: "app-root",
-    imports: [
+  selector: "app-root",
+  imports: [
     CoursesComponent,
     SocialMediaComponent,
     LogoComponent,
@@ -20,19 +20,19 @@ import { DateTime } from "luxon";
     FooterComponent,
     YtVideosComponent,
     HotmartComponent,
-    BlackFridayComponent
-],
-    templateUrl: "./app.component.html"
+    BlackFridayComponent,
+  ],
+  templateUrl: "./app.component.html",
 })
 export class AppComponent {
-
   showBlackFridayOffer = signal(this.isBlackFridayOfferActive());
 
   private isBlackFridayOfferActive() {
-    const nowDT = DateTime.fromISO(DateTime.now().toISO({ precision: "day", includeOffset: false }));
+    const nowDT = DateTime.fromISO(
+      DateTime.now().toISO({ precision: "day", includeOffset: false }),
+    );
     const limitDT = DateTime.fromISO("2025-12-02");
-    
+
     return nowDT <= limitDT;
   }
-
 }

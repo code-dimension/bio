@@ -14,12 +14,12 @@ interface Course {
 }
 
 @Component({
-    imports: [CardComponent, CommonModule],
-    selector: "app-courses",
-    host: {
-        "[class]": '"space-y-8"',
-    },
-    template: `
+  imports: [CardComponent, CommonModule],
+  selector: "app-courses",
+  host: {
+    "[class]": '"space-y-8"',
+  },
+  template: `
     @for (item of courses; track item.title) {
       <app-card class="block" [link]="item.link" [color]="item.color">
         @if (item.badges) {
@@ -42,7 +42,7 @@ interface Course {
       </app-card>
     }
   `,
-    styles: [``]
+  styles: [``],
 })
 export class CoursesComponent {
   courses: Course[] = [
@@ -54,7 +54,7 @@ export class CoursesComponent {
       link: "https://www.codedimension.com.br/cursos/angular-moderno/?utm_source=bio&utm_medium=organic&utm_campaign=bio_website",
       badges: [{ label: "Lançamento - 20% OFF", class: "badge-primary" }],
     },
-    
+
     {
       color: "primary",
       title: "Curso Testes Automatizados com Angular!",

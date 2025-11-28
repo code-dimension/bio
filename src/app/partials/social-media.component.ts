@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { CardComponent } from "../components/card.component";
 
-
 interface SocialMedia {
   href: string;
   src: string;
@@ -9,12 +8,12 @@ interface SocialMedia {
 }
 
 @Component({
-    imports: [],
-    selector: "app-social-media",
-    host: {
-        "[class]": '"space-y-8"',
-    },
-    template: `
+  imports: [],
+  selector: "app-social-media",
+  host: {
+    "[class]": '"space-y-8"',
+  },
+  template: `
     <section class="flex justify-center space-x-4">
       @for (item of socialMediaList; track $index) {
         <a [href]="item.href">
@@ -23,7 +22,7 @@ interface SocialMedia {
       }
     </section>
   `,
-    styles: [``]
+  styles: [``],
 })
 export class SocialMediaComponent {
   socialMediaList: SocialMedia[] = [

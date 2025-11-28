@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { CardComponent } from "../components/card.component";
 
-
 interface Content {
   title: string;
   description: string;
@@ -9,12 +8,12 @@ interface Content {
 }
 
 @Component({
-    imports: [CardComponent],
-    selector: "app-contents",
-    host: {
-        "[class]": '"space-y-8"',
-    },
-    template: `
+  imports: [CardComponent],
+  selector: "app-contents",
+  host: {
+    "[class]": '"space-y-8"',
+  },
+  template: `
     @for (item of contents; track item.title) {
       <app-card class="block" [link]="item.link">
         <ng-container title>
@@ -27,7 +26,7 @@ interface Content {
       </app-card>
     }
   `,
-    styles: [``]
+  styles: [``],
 })
 export class ContentsComponent {
   contents: Content[] = [

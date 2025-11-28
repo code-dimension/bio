@@ -11,16 +11,16 @@ interface Content {
 }
 
 @Component({
-    imports: [VideoComponent, CommonModule],
-    selector: "app-yt-videos",
-    template: `
+  imports: [VideoComponent, CommonModule],
+  selector: "app-yt-videos",
+  template: `
     <div class="w-full space-y-8">
       @for (video of videos$ | async; track video) {
         <app-video class="block" [videoUrl]="video"></app-video>
       }
     </div>
   `,
-    styles: [``]
+  styles: [``],
 })
 export class YtVideosComponent {
   youtubeService = inject(YoutubeService);

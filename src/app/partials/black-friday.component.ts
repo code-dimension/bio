@@ -14,12 +14,12 @@ interface Offer {
 }
 
 @Component({
-    imports: [CardComponent, CommonModule],
-    selector: "app-black-friday",
-    host: {
-        "[class]": '"space-y-8"',
-    },
-    template: `
+  imports: [CardComponent, CommonModule],
+  selector: "app-black-friday",
+  host: {
+    "[class]": '"space-y-8"',
+  },
+  template: `
     @for (item of offers; track item.title) {
       <app-card class="block" [link]="item.link" [color]="item.color">
         @if (item.badges) {
@@ -42,7 +42,7 @@ interface Offer {
       </app-card>
     }
   `,
-    styles: [``]
+  styles: [``],
 })
 export class BlackFridayComponent {
   offers: Offer[] = [
