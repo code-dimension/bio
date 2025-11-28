@@ -12,8 +12,18 @@
 
     <app-social-media class="block" />
 
+    @if (showBlackFridayOffer()) {
+      <section class="flex justify-center">
+        <h2 class="text-2xl font-bold text-center">Oferta de Black Friday! 🚨</h2>
+      </section>
+      
+      <section class="space-y-8">
+        <app-black-friday />
+      </section>
+    }
+      
     <section class="flex justify-center">
-      <h2 class="text-2xl font-bold text-center">Nossos super cursos! 🚨👇🏽</h2>
+      <h2 class="text-2xl font-bold text-center">Nossos super cursos! 🚀👇🏽</h2>
     </section>
 
     <section class="space-y-8">
