@@ -1,5 +1,5 @@
 import { Component, signal } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { CoursesComponent } from "./partials/courses.component";
 import { SocialMediaComponent } from "./partials/social-media.component";
 import { LogoComponent } from "./partials/logo.component";
@@ -13,16 +13,15 @@ import { DateTime } from "luxon";
 @Component({
     selector: "app-root",
     imports: [
-        CommonModule,
-        CoursesComponent,
-        SocialMediaComponent,
-        LogoComponent,
-        ContentsComponent,
-        FooterComponent,
-        YtVideosComponent,
-        HotmartComponent,
-        BlackFridayComponent
-    ],
+    CoursesComponent,
+    SocialMediaComponent,
+    LogoComponent,
+    ContentsComponent,
+    FooterComponent,
+    YtVideosComponent,
+    HotmartComponent,
+    BlackFridayComponent
+],
     templateUrl: "./app.component.html"
 })
 export class AppComponent {

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { CardComponent } from "../components/card.component";
-import { CommonModule } from "@angular/common";
+
 
 interface Content {
   title: string;
@@ -9,7 +9,7 @@ interface Content {
 }
 
 @Component({
-    imports: [CardComponent, CommonModule],
+    imports: [CardComponent],
     selector: "app-contents",
     host: {
         "[class]": '"space-y-8"',

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { CardComponent } from "../components/card.component";
-import { CommonModule } from "@angular/common";
+
 
 interface SocialMedia {
   href: string;
@@ -9,7 +9,7 @@ interface SocialMedia {
 }
 
 @Component({
-    imports: [CommonModule],
+    imports: [],
     selector: "app-social-media",
     host: {
         "[class]": '"space-y-8"',

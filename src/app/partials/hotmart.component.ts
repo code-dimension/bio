@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 import { CardComponent } from "../components/card.component";
-import { CommonModule } from "@angular/common";
+
 
 @Component({
-    imports: [CardComponent, CommonModule],
+    imports: [CardComponent],
     selector: "app-hotmart",
     host: {
         "[class]": '"space-y-8"',
