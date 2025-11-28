@@ -9,13 +9,12 @@ interface Content {
 }
 
 @Component({
-  standalone: true,
-  imports: [CardComponent, CommonModule],
-  selector: "app-contents",
-  host: {
-    "[class]": '"space-y-8"',
-  },
-  template: `
+    imports: [CardComponent, CommonModule],
+    selector: "app-contents",
+    host: {
+        "[class]": '"space-y-8"',
+    },
+    template: `
     @for (item of contents; track item.title) {
       <app-card class="block" [link]="item.link">
         <ng-container title>
@@ -28,7 +27,7 @@ interface Content {
       </app-card>
     }
   `,
-  styles: [``],
+    styles: [``]
 })
 export class ContentsComponent {
   contents: Content[] = [

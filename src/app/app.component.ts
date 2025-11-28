@@ -11,20 +11,19 @@ import { BlackFridayComponent } from "./partials/black-friday.component";
 import { DateTime } from "luxon";
 
 @Component({
-  selector: "app-root",
-  standalone: true,
-  imports: [
-    CommonModule,
-    CoursesComponent,
-    SocialMediaComponent,
-    LogoComponent,
-    ContentsComponent,
-    FooterComponent,
-    YtVideosComponent,
-    HotmartComponent,
-    BlackFridayComponent
-],
-  templateUrl: "./app.component.html",
+    selector: "app-root",
+    imports: [
+        CommonModule,
+        CoursesComponent,
+        SocialMediaComponent,
+        LogoComponent,
+        ContentsComponent,
+        FooterComponent,
+        YtVideosComponent,
+        HotmartComponent,
+        BlackFridayComponent
+    ],
+    templateUrl: "./app.component.html"
 })
 export class AppComponent {
 

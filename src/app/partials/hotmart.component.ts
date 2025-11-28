@@ -3,13 +3,12 @@ import { CardComponent } from "../components/card.component";
 import { CommonModule } from "@angular/common";
 
 @Component({
-  standalone: true,
-  imports: [CardComponent, CommonModule],
-  selector: "app-hotmart",
-  host: {
-    "[class]": '"space-y-8"',
-  },
-  template: `
+    imports: [CardComponent, CommonModule],
+    selector: "app-hotmart",
+    host: {
+        "[class]": '"space-y-8"',
+    },
+    template: `
     <app-card class="block" [link]="hotmartLink" color="primary">
       <ng-container title> Acesse nossa plataforma de cursos! </ng-container>
 
@@ -18,7 +17,7 @@ import { CommonModule } from "@angular/common";
       </ng-container>
     </app-card>
   `,
-  styles: [``],
+    styles: [``]
 })
 export class HotmartComponent {
   hotmartLink = "https://hotmart.com/pt-br/club/code-dimension";

@@ -9,13 +9,12 @@ interface SocialMedia {
 }
 
 @Component({
-  standalone: true,
-  imports: [CommonModule],
-  selector: "app-social-media",
-  host: {
-    "[class]": '"space-y-8"',
-  },
-  template: `
+    imports: [CommonModule],
+    selector: "app-social-media",
+    host: {
+        "[class]": '"space-y-8"',
+    },
+    template: `
     <section class="flex justify-center space-x-4">
       @for (item of socialMediaList; track $index) {
         <a [href]="item.href">
@@ -24,7 +23,7 @@ interface SocialMedia {
       }
     </section>
   `,
-  styles: [``],
+    styles: [``]
 })
 export class SocialMediaComponent {
   socialMediaList: SocialMedia[] = [

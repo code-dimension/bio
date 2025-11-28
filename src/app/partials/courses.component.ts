@@ -14,13 +14,12 @@ interface Course {
 }
 
 @Component({
-  standalone: true,
-  imports: [CardComponent, CommonModule],
-  selector: "app-courses",
-  host: {
-    "[class]": '"space-y-8"',
-  },
-  template: `
+    imports: [CardComponent, CommonModule],
+    selector: "app-courses",
+    host: {
+        "[class]": '"space-y-8"',
+    },
+    template: `
     @for (item of courses; track item.title) {
       <app-card class="block" [link]="item.link" [color]="item.color">
         @if (item.badges) {
@@ -43,7 +42,7 @@ interface Course {
       </app-card>
     }
   `,
-  styles: [``],
+    styles: [``]
 })
 export class CoursesComponent {
   courses: Course[] = [
