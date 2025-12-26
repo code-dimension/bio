@@ -8,6 +8,6 @@ export class YoutubeService {
   httpClient = inject(HttpClient);
 
   getLastestVideos() {
-    return this.httpClient.get<string[]>("/api/list-latest-videos");
+    return this.httpClient.get<string[]>("http://localhost:3000/api/list-latest-videos");
   }
 }

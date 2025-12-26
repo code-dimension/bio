@@ -33,7 +33,7 @@ export function app(): express.Express {
     express.static(browserDistFolder, {
       maxAge: "1y",
       index: "index.html",
-    }),
+    })
   );
 
   // All regular routes use the Angular engine
@@ -56,8 +56,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const hostname =
-    process.env["NODE_ENV"] === "production" ? "0.0.0.0" : "localhost";
+  const hostname = "localhost";
   const port = process.env["PORT"] || 3000;
 
   // Start up the Node server
